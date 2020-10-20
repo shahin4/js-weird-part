@@ -132,13 +132,75 @@ kore person.eat = ; ebabe use korte hbe na */
   return person;
 }
 
-const sakib = Person("sakib", 35);
-sakib.play();
-const tamim = Person("Tamim", 35);
-tamim.play();
+// const sakib = Person("sakib", 35);
+// sakib.play();
+// const tamim = Person("Tamim", 35);
+// tamim.play();
 
 /*
 ekhan lokkino j amdr object.creat korci sta tik ace kintu
 amdr arkta object r upor depend takte hhoce
-ba assistant lagce
+ba assistant lagce  kintu amra icca korel amdr Person object orthak parent object k
+
+kaje lagieu kaj ta kori r etai hocce prototype.jaca script amdr function r sathe prototype bole ekta proporty die take
+amra jegulo share korbo segulo Person.Prototype r vitor rakbo tahole 
+er sob child  object eta te acces nite parbe ete kore amder onno kono objcet r sahajjo nite hocce na
+
  */
+
+// prototype methods
+
+function Person(name, age) {
+  let person = Object.create(Person.prototype);
+
+  person.name = name;
+  person.age = age;
+
+  return person;
+}
+
+Person.prototype = {
+  eat() {
+    console.log("person is eating");
+  },
+
+  sleep() {
+    console.log("person is sleeping");
+  },
+  play() {
+    console.log("person is playing");
+  },
+};
+
+// const sakib = Person("sakib", 35);
+// sakib.play();
+// const tamim = Person("Tamim", 35);
+// tamim.play();
+
+// new keyword
+function Person(name, age) {
+  // by defalt js let this name object creat kore dei
+
+  this.name = name;
+  this.age = age;
+
+  //return this;
+}
+
+Person.prototype = {
+  eat() {
+    console.log("person is eating");
+  },
+
+  sleep() {
+    console.log("person is sleeping");
+  },
+  play() {
+    console.log("person is playing");
+  },
+};
+
+const sakib = new Person("sakib", 35);
+sakib.play();
+const tamim = new Person("Tamim", 35);
+tamim.play();
